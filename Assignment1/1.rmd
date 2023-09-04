@@ -38,4 +38,11 @@ print(mean(p))
 print(var(p))
 ```
 
+95%
 
+```{r}
+qts <- quantile(p_sample,probs=c(.05,.95))
+hist(x)
+abline(v=qts[1],col="red")
+abline(v=qts[2],col="red")
+```
