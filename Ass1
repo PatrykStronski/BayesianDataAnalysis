@@ -1,0 +1,10 @@
+u = 0.1
+stddev = 0.001
+
+alpha = u * ((u*(1-u))/stddev^2 -1)
+beta = alpha * (1-u)/u
+
+p = seq(0,1, length=100)
+
+plot(p, dbeta(p, alpha, beta), ylab='density',
+     type ='l', col='purple', main='Beta Distribution')
