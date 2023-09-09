@@ -1,0 +1,37 @@
+5A
+```{r}
+p_a <- 0.4
+p_b <- 0.1
+p_c <- 0.5
+p_r_a <- 2 / 7
+p_r_b <- 4 / 5
+p_r_c <- 1 / 4
+
+pr <- function(probs) {
+  return(sum(probs))
+}
+
+p_r <- pr(c(p_a * p_r_a, p_b * p_r_b, p_c * p_r_c))
+print(p_r)
+```
+
+5B
+```{r}
+p_box_r <- function(a, ab, b) {
+  return(a * ab / b)
+}
+```
+P(A|R)
+```{r}
+print(p_box_r(p_a, p_r_a, p_r))
+```
+P(B|R)
+```{r}
+print(p_box_r(p_b, p_r_b, p_r))
+```
+P(C|R)
+```{r}
+print(p_box_r(p_c, p_r_c, p_r))
+```
+
+
