@@ -1,48 +1,51 @@
 Assignment 1.3
+
 ```{r}
-u = 0.1
-stddev = 0.001
+u <- 0.2
+variance <- 0.01
 
-alpha = u * ((u*(1-u))/stddev -1)
-beta = alpha * (1-u)/u
+alpha <- u * ((u*(1-u))/variance -1)
+beta <- alpha * (1-u)/u
 
-p = seq(0,1, length=10000)
-beta_fun = dbeta(p, alpha, beta)
+p <- seq(0,1, length=10000)
+beta_fun <- dbeta(p, alpha, beta)
 ```
 
+3A
 Density function
-
 ```{r}
 plot(p, beta_fun, ylab='density',
      type ='l', col='purple', main='Beta Distribution')
 ```
 
-Histogram of teh sample
+3B
+Histogram of the sample
 
 ```{r}
-p_sample = sample(beta_fun,1000)
-hist(p_sample)
+beta_sample <- sample(beta_fun,1000)
+hist(beta_sample)
 ```
 
+3C
 Mean and Variance of the sample
 
 ```{r}
-print(mean(p_sample))
-print(var(p_sample))
+print(mean(beta_sample))
+print(var(beta_sample))
 ```
 
 Mean and Variance of the whoel set
 
 ```{r}
-print(mean(p))
-print(var(p))
+print(mean(beta_fun))
+print(var(beta_fun))
 ```
 
+3D
 95%
 
 ```{r}
-qts <- quantile(p_sample,probs=c(.05,.95))
-hist(x)
-abline(v=qts[1],col="red")
-abline(v=qts[2],col="red")
+confidence_interval <- cumsum(beta_sample) / sum(beta_sample)
+beta_sample[which(confidence_interval >= 0.025)[1]]
+beta_sample[which(confidence_interval >= 0.975)[1]-1]
 ```
